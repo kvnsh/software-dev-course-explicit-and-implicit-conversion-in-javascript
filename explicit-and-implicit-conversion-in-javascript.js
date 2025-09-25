@@ -18,15 +18,35 @@ Use console.log() to clearly show the before-and-after type conversions.
 
 */
 
-
-let result = "5" - 2;
+// Subtraction automatically coerces "5" into number (implicit conversion works fine).
+// But for clarity, we can use Number() explicitly.
+let result = Number("5") - 2;
 console.log("The result is: " + result);
 
-let isValid = Boolean("false");
+// Boolean("false") is TRUE because it is not one of these 6 formats : 0, null, undefined, NaN, "", false.
+let isValid = (String("false") === "false");
 if (isValid) {
     console.log("This is valid!");
 }
-
-let age = "25";
+// "25" + 5 results in "255" (string concatenation) due to implicit conversion.
+// Fix: convert age to a number explicitly with Number().
+let age = Number("25");
 let totalAge = age + 5;
 console.log("Total Age: " + totalAge);
+
+// implicit conversion
+let implicitExample = "5" * 2;
+console.log("implicit conversion: " + implicitExample);
+
+//explicit conversion
+let convertedNumber = Number(implicitExample);
+console.log("explicit conversion: " + convertedNumber);
+
+// edge case: null
+let nullValue = null;
+console.log(nullValue);
+console.log(Boolean(nullValue));
+
+let nullValueAfterNUmber = Number(null);
+console.log(nullValueAfterNUmber);
+console.log(Boolean(nullValueAfterNUmber));
